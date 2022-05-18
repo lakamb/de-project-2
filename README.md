@@ -11,7 +11,7 @@ agreement_commission.
 
 3. Создан справочник о типах доставки **shipping_transfer** из строки shipping_transfer_description через разделитель :.
 Названия полей:
-id (PK)
+id (PK),
 transfer_type,
 transfer_model,
 shipping_transfer_rate.
@@ -23,11 +23,11 @@ shipping_transfer_rate.
 6. Создайте представление **shipping_datamart** на основании готовых таблиц для аналитики:
 shippingid
 vendorid
-transfer_type — тип доставки из таблицы shipping_transfer
-full_day_at_shipping — количество полных дней, в течение которых длилась доставка. Высчитывается как разница между shipping_end_fact_datetime-shipping_start_fact_datetime (в полных днях)
-is_delay — статус, показывающий просрочена ли доставка. Высчитывается как: shipping_end_fact_datetime > shipping_start_fact_datetime → 1; 0
-is_shipping_finish — статус, показывающий, что доставка завершена. Если финальный status = finished → 1; 0
-delay_day_at_shipping — количество дней, на которые была просрочена доставка. Высчитыается как: shipping_end_fact_datetime > shipping_start_fact_datetime → shipping_end_fact_datetime - shipping_end_plan_datetime; 0.
-payment_amount — сумма платежа пользователя
-vat — итоговый налог на доставку. Высчитывается как: payment_amount * ( shipping_country_base_rate + agreement_rate + shipping_transfer_rate).
-\nprofit — итоговый доход компании с доставки. Высчитывается как: payment_amount* agreement_commission.
+transfer_type — тип доставки из таблицы shipping_transfer;
+full_day_at_shipping — количество полных дней, в течение которых длилась доставка. Высчитывается как разница между shipping_end_fact_datetime-shipping_start_fact_datetime (в полных днях);
+is_delay — статус, показывающий просрочена ли доставка. Высчитывается как: shipping_end_fact_datetime > shipping_start_fact_datetime → 1, иначе 0;
+is_shipping_finish — статус, показывающий, что доставка завершена. Если финальный status = finished → 1, иначе 0;
+delay_day_at_shipping — количество дней, на которые была просрочена доставка. Высчитыается как: shipping_end_fact_datetime > shipping_start_fact_datetime → shipping_end_fact_datetime - shipping_end_plan_datetime, иначе 0;
+payment_amount — сумма платежа пользователя;
+vat — итоговый налог на доставку. Высчитывается как: payment_amount * ( shipping_country_base_rate + agreement_rate + shipping_transfer_rate);
+profit — итоговый доход компании с доставки. Высчитывается как: payment_amount* agreement_commission
