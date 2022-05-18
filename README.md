@@ -30,4 +30,4 @@ is_shipping_finish — статус, показывающий, что доста
 delay_day_at_shipping — количество дней, на которые была просрочена доставка. Высчитыается как: shipping_end_fact_datetime > shipping_start_fact_datetime → shipping_end_fact_datetime - shipping_end_plan_datetime; 0.
 payment_amount — сумма платежа пользователя
 vat — итоговый налог на доставку. Высчитывается как: payment_amount * ( shipping_country_base_rate + agreement_rate + shipping_transfer_rate).
-profit — итоговый доход компании с доставки. Высчитывается как: payment_amount* agreement_commission.
+[\n]profit — итоговый доход компании с доставки. Высчитывается как: payment_amount* agreement_commission.
